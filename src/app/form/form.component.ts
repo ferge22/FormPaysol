@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ContactService } from '../contact.service';
+import { oneOfControlRequired } from '../forms/validators';
 
 @Component({
   selector: 'app-form',
@@ -27,10 +28,13 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   private initForm(): void {
-    this.form = this.formBuilder.group({
-      email: [null],
-      name: [null],
-    });
+    this.form = this.formBuilder.group(
+      {
+        email: [null],
+        name: [null],
+      },
+      { validators: oneOfControlRequired }
+    );
   }
 
   submit(): void {
