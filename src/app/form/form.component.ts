@@ -49,9 +49,9 @@ export class FormComponent implements OnInit, OnDestroy {
 
     this.subscriptions.add(
       this.contactService.send({ ...this.form.value }).subscribe(() => {
+        this.form.reset();
         this.showAlert = true;
         this.alertMessage = 'Form submited!';
-        this.form.reset();
 
         // hide alert after 1.5s
         setTimeout(() => {
