@@ -22,5 +22,6 @@
       />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <app-alert *ngIf="showAlert" [alertMessage]="alertMessage"></app-alert>
   </form>
 </div>
