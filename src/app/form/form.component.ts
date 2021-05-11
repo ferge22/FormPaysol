@@ -30,7 +30,10 @@ export class FormComponent implements OnInit, OnDestroy {
 
   submit(): void {
     this.subscriptions.add(
-      this.contactService.send({ ...this.form.value }).subscribe(() => {})
+      this.contactService.send({ ...this.form.value }).subscribe(
+        () => {
+          
+        })
     );
   }
 
