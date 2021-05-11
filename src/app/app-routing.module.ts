@@ -6,11 +6,15 @@ const routes: Routes = [
   {
     path: '',
     component: FormComponent,
-  }
+  },
+  {
+    path: '**',
+    redirectTo: '/',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
