@@ -8,5 +8,6 @@ export const oneOfControlRequired: ValidatorFn = (
   if (email || name) {
     return null;
   }
+
   return { atLeastOne: true };
 };

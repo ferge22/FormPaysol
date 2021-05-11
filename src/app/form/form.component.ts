@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ContactService } from '../contact.service';
 import { oneOfControlRequired } from '../forms/validators';
@@ -12,7 +12,6 @@ import { oneOfControlRequired } from '../forms/validators';
 export class FormComponent implements OnInit, OnDestroy {
   form: FormGroup;
   private readonly subscriptions = new Subscription();
-
   // tslint:disable-next-line: max-line-length
   // just created simplee component for aler, could have done like alert service but it would taken more time to impement, so its just simple solution for this task
   showAlert: boolean;
@@ -55,6 +54,14 @@ export class FormComponent implements OnInit, OnDestroy {
         }, 1500);
       })
     );
+  }
+
+  containsValidatorError(): boolean {
+    return this.form.touched && this.form.hasError('atLeastOne');
+  }
+
+  getControl(name: string): FormControl {
+    return this.form.get(name) as FormControl;
   }
 
   ngOnDestroy(): void {

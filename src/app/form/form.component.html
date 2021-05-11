@@ -8,6 +8,7 @@
         class="form-control"
         id="email"
         placeholder="Enter email"
+        [class.is-invalid]="containsValidatorError()"
       />
     </div>
 
@@ -19,8 +20,12 @@
         class="form-control"
         id="name"
         placeholder="Enter name"
+        [class.is-invalid]="containsValidatorError()"
       />
     </div>
+    <p *ngIf="containsValidatorError()" class="error">
+      Email or name is required!
+    </p>
     <button type="submit" class="btn btn-primary">Submit</button>
     <app-alert *ngIf="showAlert" [alertMessage]="alertMessage"></app-alert>
   </form>
